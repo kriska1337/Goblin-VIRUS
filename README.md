@@ -1,89 +1,127 @@
-# MoonRise Goblin 👹
 
-A fun prank program featuring a goblin that follows your cursor and asks unexpected questions. The goblin appears on top of all windows and reacts when you try to open system applications.
+# Goblin‑VIRUS 👹  
+A playful Windows‑only “prank” program that spawns a goblin that follows the mouse cursor, shows random speech‑bubble messages, and reacts when the user tries to open system tools such as Task Manager, Regedit or Windows Defender.  
 
-## Features
+The project lives in the **`main.py`** file of the repository:  
 
-- 🎯 Goblin follows your mouse cursor
-- 💬 Random phrases in speech bubbles
-- 🛡️ Defensive reaction when attempting to open Task Manager, Regedit, or Windows Defender
-- 👻 Transparent window overlay on top of all applications
-- 🔄 Auto-start on system boot (adds itself to Windows registry)
-- 🎭 Multiple goblins spawn on interaction
+## 🎯 Features  
 
-## Requirements
+| Feature | Description |
+|---------|-------------|
+| **🎯 Cursor‑following goblin** | The goblin image tracks the mouse pointer and stays on top of all windows. |
+| **💬 Random phrases** | Speech‑bubble messages pop up at unpredictable intervals. |
+| **🛡️ Defensive reaction** | When the user attempts to open Task Manager, Regedit, or Windows Defender the goblin displays a special warning or spawns extra copies. |
+| **👻 Transparent overlay** | The goblin is drawn with an alpha channel, allowing it to sit “over” any application. |
+| **🔄 Auto‑run on boot** | The script adds a registry entry (`Run`) so it starts automatically with Windows. |
+| **🎭 Multiple goblins** | Repeated interactions can spawn extra goblins for extra fun. |
 
-- Python 3.7+
-- Windows OS
-- Python libraries:
-  - pygame
-  - pyautogui
-  - requests
-  - Pillow (PIL)
-  - psutil
-  - pywin32
+---
 
-## Installation
+## 📦 Requirements  
 
-1. Clone the repository:
+Create a **`requirements.txt`** file (or install directly) with the following packages:
 
-git clone https://github.com/[your-username]/krutiy-goblin.git
-cd krutiy-goblin
+```text
+pygame==2.6.0
+pyautogui==0.9.54
+requests==2.32.2
+Pillow==10.4.0
+psutil==6.1.0
+pywin32==306
+```
 
-2. Install dependencies:
+*All dependencies are compatible with Python 3.7 + (tested on Python 3.9‑3.12 on Windows 10/11).*
 
-pip install pygame pyautogui requests Pillow psutil pywin32
+To install them in a virtual environment:
 
-## Usage
+```bash
+python -m venv venv
+.\venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+```
 
-Simply run the script:
+---
 
-python goblin.py
+## 🚀 Quick start  
 
-**Warning:** The program will automatically add itself to Windows startup via registry.
+1. **Clone the repository**  
 
-## Building to .exe
+   ```bash
+   git clone https://github.com/kriska1337/Goblin-VIRUS.git
+   cd Goblin-VIRUS
+   ```
 
-To create an executable file using PyInstaller:
+2. **Install the dependencies**  
 
-1. Install PyInstaller:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+3. **Run the program**  
+
+   ```bash
+   python main.py
+   ```
+
+   *The script will automatically add itself to the Windows startup registry.*
+
+---
+
+## 📦 Building an executable  
+
+### Using PyInstaller  
+
+```bash
 pip install pyinstaller
+pyinstaller --onefile --noconsole --icon=goblin.ico main.py
+# The binary will appear in the ./dist folder
+```
 
-2. Build the program:
+### Using cx_Freeze  
 
-pyinstaller --onefile --noconsole --icon=goblin.ico goblin.py
+1. Install cx_Freeze:  
 
-3. The compiled .exe file will be in the `dist/` folder
+   ```bash
+   pip install cx_Freeze
+   ```
 
-### Alternative method with cx_Freeze:
+2. Create **`setup.py`**  
 
-1. Install cx_Freeze:
+   ```python
+   from cx_Freeze import setup, Executable
 
-pip install cx_Freeze
+   setup(
+       name="Goblin-VIRUS",
+       version="1.0",
+       description="Goblin prank program",
+       executables=[Executable("main.py", base="Win32GUI")]
+   )
+   ```
 
-2. Create a `setup.py` file:
+3. Build:  
 
-from cx_Freeze import setup, Executable
+   ```bash
+   python setup.py build
+   ```
 
-setup(
-    name="KrutiyGoblin",
-    version="1.0",
-    description="Goblin Prank Program",
-    executables=[Executable("goblin.py", base="Win32GUI")]
-)
+---
 
-3. Build:
+## 🛑 How to stop the program  
 
-python setup.py build
+1. Press **Ctrl + Alt + Del** → open **Task Manager**.  
+2. Locate the `python.exe` (or `goblin.exe` if you built a .exe) process and end it.  
+3. Remove the auto‑run entry:  
 
-## How to Stop the Program
+   - `Win + R` → `regedit` →  
+     `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` →  
+     delete the value named **“GoblinVIRUS”**.
 
-- Press `Ctrl+Alt+Delete` → Task Manager
-- Find the `python.exe` or `goblin.exe` process
-- End the process
-- Remove from startup: `Win+R` → `regedit` → `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run` → delete "GoblinPrank"
+---
 
-## Disclaimer
+## ⚠️ Disclaimer  
 
-⚠️ This program is created purely for entertainment purposes. Use it responsibly and only on your own computers or with the owner's permission. The author is not responsible for misuse.
+> ⚠️ This program is intended **solely for entertainment**.  
+> Use it responsibly, only on computers you own or on systems where the owner has given explicit permission. The author is not liable for any misuse.
+
+---  
+
