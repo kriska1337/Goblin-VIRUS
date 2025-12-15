@@ -1,4 +1,4 @@
-# Krutiy Goblin 👹
+# MoonRise Goblin 👹
 
 A fun prank program featuring a goblin that follows your cursor and asks unexpected questions. The goblin appears on top of all windows and reacts when you try to open system applications.
 
