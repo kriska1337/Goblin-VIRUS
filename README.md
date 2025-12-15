@@ -2,7 +2,6 @@
 # Goblin‑VIRUS 👹  
 A playful Windows‑only “prank” program that spawns a goblin that follows the mouse cursor, shows random speech‑bubble messages, and reacts when the user tries to open system tools such as Task Manager, Regedit or Windows Defender.  
 
-The project lives in the **`main.py`** file of the repository:  
 
 ## 🎯 Features  
 
